@@ -1,12 +1,10 @@
 # homeassistant
+homeassistant/home-assistant*
 homeassistant/.cloud
 homeassistant/.storage
 homeassistant/blueprints
 homeassistant/deps
 homeassistant/tts
-homeassistant/home-assistant*
-homeassistant/scenes.yaml
-homeassistant/scripts.yaml
 homeassistant/secrets.yaml
 
 # mosquitto

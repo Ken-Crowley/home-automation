@@ -1,5 +1,5 @@
-- alias: Control plug with button
-  description: Control plug with button
+- alias: Toggle plug with button
+  description: Toggle plug with button
   trigger:
    - platform: mqtt
      topic: zigbee2mqtt/Button/action
