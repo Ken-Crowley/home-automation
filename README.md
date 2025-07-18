@@ -16,4 +16,4 @@
 8. Within zigbee2mqtt web browser (`localhost:8485`), Click Permit join (All) to pair zigbee devices.
 9. Pairing zigbee devices will update the zigbee2mqtt `configuration.yml` file.
 10. Now you can add automation scripts (`automations.yml` file) to home assistant using zigbee devices.
-    - See zigbee-button-toggle-plug branch I made that connects the zigbee button and zigbee plug devices and grabs their states in the automation script so the button toggles the plug.
+    - See the `zigbee-button-toggle-plug` branch I made that connects the zigbee button and zigbee plug devices and grabs their states in the automation script so the button toggles the plug.
