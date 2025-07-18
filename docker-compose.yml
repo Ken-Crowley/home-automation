@@ -1,4 +1,4 @@
-version: '1.0'
+
 services:
   zigbee2mqtt:
     image: ghcr.io/koenkk/zigbee2mqtt:2.5.1
