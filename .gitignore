@@ -1,0 +1,19 @@
+# homeassistant
+homeassistant/.cloud
+homeassistant/.storage
+homeassistant/blueprints
+homeassistant/deps
+homeassistant/tts
+homeassistant/home-assistant*
+homeassistant/scenes.yaml
+homeassistant/scripts.yaml
+homeassistant/secrets.yaml
+
+# mosquitto
+mosquitto/log*
+
+# zigbee2mqtt
+zigbee2mqtt/data/log*
+zigbee2mqtt/data/coordinator_backup.json
+zigbee2mqtt/data/database.db
+zigbee2mqtt/data/state.json

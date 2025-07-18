@@ -1,0 +1,50 @@
+version: 4
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://192.168.0.2:1883
+serial:
+  port: tcp://slzb-06.local:6638
+  baudrate: 115200
+  adapter: zstack
+  disable_led: false
+  rtscts: false
+advanced:
+  log_level: info
+  channel: 11
+  network_key:
+    - 3
+    - 205
+    - 215
+    - 152
+    - 114
+    - 218
+    - 17
+    - 102
+    - 214
+    - 108
+    - 53
+    - 75
+    - 190
+    - 198
+    - 72
+    - 123
+  pan_id: 41625
+  ext_pan_id:
+    - 181
+    - 160
+    - 138
+    - 182
+    - 25
+    - 84
+    - 107
+    - 105
+frontend:
+  enabled: true
+  port: 8080
+homeassistant:
+  enabled: true
+devices:
+  '0x282c02bfffeea265':
+    friendly_name: Button
+  '0xffffb40e06009295':
+    friendly_name: Plug

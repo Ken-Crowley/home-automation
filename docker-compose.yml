@@ -1,0 +1,42 @@
+version: '1.0'
+services:
+  zigbee2mqtt:
+    image: ghcr.io/koenkk/zigbee2mqtt:2.5.1
+    container_name: zigbee2mqtt
+    hostname: zigbee2mqtt
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    volumes:
+      - D:/home-automation/zigbee2mqtt/data:/app/data
+    ports:
+      - 8485:8080
+    environment:
+      - TZ=US/Arizona
+    privileged: true
+  mosquitto:
+    image: eclipse-mosquitto:2.0.22
+    container_name: mqtt
+    hostname: mqtt
+    restart: unless-stopped
+    volumes:
+      - D:/home-automation/mosquitto:/mosquitto
+    ports:
+      - 1883:1883
+    environment:
+      - TZ=US/Arizona
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:2025.7.2
+    container_name: homeassistant
+    hostname: homeassistant
+    restart: unless-stopped
+    volumes:
+      - D:/home-automation/homeassistant:/config
+    ports:
+      - 8123:8123
+    environment:
+      - TZ=US/Arizona
+    privileged: true
+networks:
+  homeassistant:
+    driver: bridge
