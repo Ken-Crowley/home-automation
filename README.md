@@ -10,8 +10,9 @@
 5. Enter mqtt as the broker and 1883 for the port.
 6. Type localhost:8485 in web browser to access zigbee2mqtt. Go through the onboarding procedure.
     - Coordinator/Apater Port/Path: For SMLight SLZB-06, use `tcp://slzb-06.local:6638`.
-    - MQQT Server: I had to replace `localhost` with the IP address of the mqqt server.
+    - MQQT Server: I had to replace `localhost` with the IP address of the mqqt server. Using hostname of mqqt doesn't seem to work.
     - Home assistant enabled?: `True`
-7. Within zigbee2mqtt web browser, Click Permit join (All) to pair zigbee devices.
-8. I've paired a zigbee button and zigbee plug (this updates the zigbee2mqtt configuration.yml file).
-9. Add automation script to home assistant (seen in automations.yaml).
+7. The onboarding procedure will automatically update the zigbee2mqtt configuration.yml file
+8. Within zigbee2mqtt web browser (`localhost:8485`), Click Permit join (All) to pair zigbee devices.
+9. Pairing zigbee devices will update the zigbee2mqtt configuration.yml file.
+10. Now you can add automation scripts to home assistant using zigbee devices.
