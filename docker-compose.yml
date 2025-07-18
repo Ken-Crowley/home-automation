@@ -1,5 +1,17 @@
 
 services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:2025.7.2
+    container_name: homeassistant
+    hostname: homeassistant
+    restart: unless-stopped
+    volumes:
+      - D:/home-automation/homeassistant:/config
+    ports:
+      - 8123:8123
+    environment:
+      - TZ=${TZ}
+    privileged: true
   zigbee2mqtt:
     image: ghcr.io/koenkk/zigbee2mqtt:2.5.1
     container_name: zigbee2mqtt
@@ -12,31 +24,32 @@ services:
     ports:
       - 8485:8080
     environment:
-      - TZ=US/Arizona
+      - TZ=${TZ}
     privileged: true
   mosquitto:
     image: eclipse-mosquitto:2.0.22
-    container_name: mqtt
-    hostname: mqtt
+    container_name: mosquitto
+    hostname: mosquitto
     restart: unless-stopped
     volumes:
       - D:/home-automation/mosquitto:/mosquitto
     ports:
       - 1883:1883
     environment:
-      - TZ=US/Arizona
-  homeassistant:
-    image: ghcr.io/home-assistant/home-assistant:2025.7.2
-    container_name: homeassistant
-    hostname: homeassistant
+      - TZ=${TZ}
+  matter:
+    image: ghcr.io/home-assistant-libs/python-matter-server:8.0.0
+    container_name: matter
+    hostname: matter
     restart: unless-stopped
+    security_opt:
+      - apparmor=unconfined
     volumes:
-      - D:/home-automation/homeassistant:/config
+      - D:/home-automation/matter:/data
     ports:
-      - 8123:8123
+      - 5580:5580
     environment:
-      - TZ=US/Arizona
-    privileged: true
+      - TZ=${TZ}
 networks:
   homeassistant:
     driver: bridge
