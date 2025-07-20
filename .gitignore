@@ -6,6 +6,7 @@ homeassistant/blueprints
 homeassistant/deps
 homeassistant/tts
 homeassistant/secrets.yaml
+homeassistant/custom_components
 
 # mosquitto
 mosquitto/log*
