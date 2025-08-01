@@ -1,17 +1,18 @@
 version: 4
 mqtt:
   base_topic: zigbee2mqtt
-  server: mqtt://localhost:1883
-serial: {}
+  server: mqtt://192.168.0.34
+serial:
+  port: tcp://192.168.0.35:7638
+  adapter: zstack
 advanced:
   log_level: info
-  channel: 11
-  network_key: GENERATE
-  pan_id: GENERATE
-  ext_pan_id: GENERATE
 frontend:
   enabled: false
-  port: 8080
 homeassistant:
-  enabled: false
-onboarding: true
+  enabled: true
+devices:
+  '0x282c02bfffeea265':
+    friendly_name: Button
+  '0xffffb40e06009295':
+    friendly_name: Plug
