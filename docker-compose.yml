@@ -1,42 +1,69 @@
-
 services:
-  zigbee2mqtt:
-    image: ghcr.io/koenkk/zigbee2mqtt:2.5.1
-    container_name: zigbee2mqtt
-    hostname: zigbee2mqtt
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:2025.7.2
+    container_name: homeassistant
+    hostname: homeassistant
+    network_mode: host
     restart: unless-stopped
-    depends_on:
-      - mosquitto
     volumes:
-      - D:/home-automation/zigbee2mqtt/data:/app/data
-    ports:
-      - 8485:8080
+      - ./homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
     environment:
-      - TZ=US/Arizona
+      - TZ=${TZ}
     privileged: true
   mosquitto:
     image: eclipse-mosquitto:2.0.22
     container_name: mqtt
     hostname: mqtt
+    network_mode: host
     restart: unless-stopped
     volumes:
-      - D:/home-automation/mosquitto:/mosquitto
-    ports:
-      - 1883:1883
+      - ./mosquitto:/mosquitto
     environment:
-      - TZ=US/Arizona
-  homeassistant:
-    image: ghcr.io/home-assistant/home-assistant:2025.7.2
-    container_name: homeassistant
-    hostname: homeassistant
-    restart: unless-stopped
-    volumes:
-      - D:/home-automation/homeassistant:/config
-    ports:
-      - 8123:8123
-    environment:
-      - TZ=US/Arizona
+      - TZ=${TZ}
     privileged: true
-networks:
-  homeassistant:
-    driver: bridge
+  zigbee2mqtt:
+    image: ghcr.io/koenkk/zigbee2mqtt:2.5.1
+    container_name: zigbee2mqtt
+    hostname: zigbee2mqtt
+    network_mode: host
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    volumes:
+      - ./zigbee2mqtt/data:/app/data
+    environment:
+      - TZ=${TZ}
+    privileged: true
+  matter:
+    image: ghcr.io/home-assistant-libs/python-matter-server:8.0.0
+    container_name: matter
+    hostname: matter
+    network_mode: host
+    restart: unless-stopped
+    security_opt:
+      - apparmor=unconfined
+    volumes:
+      - ./matter:/data
+    environment:
+      - RADIO_DEVICE=spinel+tcp://192.168.0.35:6638
+      - TZ=${TZ}
+    privileged: true
+  otbr:
+    image: openthread/otbr:latest
+    container_name: otbr
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    ports:
+      - 8081:80
+    environment:
+      - RADIO_URL=spinel+hdlc+uart:///dev/ttyUSB0
+      - FIREWALL=0
+      - WEB_GUI=1
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
