@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.dashboard_home",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Home",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "picture-elements",
+                  "image": "/local/floorplan/transparent.png?version=C8A9834DE49B99CE8CA08C0B974F39B4",
+                  "elements": [
+                    {
+                      "type": "conditional",
+                      "title": "Base",
+                      "conditions": [],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "tap_action": {
+                            "action": "none"
+                          },
+                          "hold_action": {
+                            "action": "none"
+                          },
+                          "image": "/local/floorplan/base.png?version=767F591401B724D21CBE500860F55BA4",
+                          "filter": "none",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "title": "switch.plug",
+                      "conditions": [
+                        {
+                          "condition": "state",
+                          "entity": "switch.plug",
+                          "state": "on"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "tap_action": {
+                            "action": "none"
+                          },
+                          "hold_action": {
+                            "action": "none"
+                          },
+                          "image": "/local/floorplan/switch.plug.png?version=9DC6B0B18737AAFFB44046499A45222E",
+                          "filter": "none",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "mix-blend-mode": "lighten"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "switch.plug",
+                      "title": "Lamp",
+                      "style": {
+                        "top": "18.61%",
+                        "left": "43.69%",
+                        "border-radius": "50%",
+                        "text-align": "center",
+                        "background-color": "rgba(255, 255, 255, 0.3)",
+                        "opacity": "100%"
+                      },
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "double_tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": {
+                        "action": "more-info"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
