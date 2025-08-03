@@ -1,19 +1,40 @@
-# Pre-requisites
-- Docker
-- Zigbee2mqtt hub (I'm using an SMLight SLZB-06 PoE)
+## System Details
+- **Host**: [Synology NAS DS224+](https://www.synology.com/en-us/products/DS224+) [DSM 7.2.1-69057 Update 5]
+- **Zigbee Coordinator**: [SMLight SLZB-MR1](https://smlight.tech/product/slzb-mr1/) PoE [CC2652P7 20240315] 
+  - [Third Reality Zigbee Smart Button](https://3reality.com/product/smart-button/) [3RSB22BZ v1.00.35]
+  - [Third Reality Zigbee Smart Plug Gen2](https://3reality.com/product/smart-plug-gen2-with-energy-monitoring/) [3RSP02028BZ v1.00.92]
+- **Matter-over-Thread**: [SMLight SLZB-MR1](https://smlight.tech/product/slzb-mr1/) USB [EFR32MG21 20241105]
+  - [Level Matter Bolt](https://level.co/smart-lock/smart-deadbolt/) [3.4]
+  - _Note_: Matter-over-Thread requires IPv6 enabled on the Host.
 
-# Setup
-1. Run `docker compose -f 'docker-compose.yml' up -d --build`
-2. Type `localhost:8123` in web browser to access home assistant. Go through the onboarding steps.
-3. On home assistant dashboard, go to Settings -> Devices & services -> ADD INTEGRATION
-4. Search for MQTT and add MQTT.
-5. Enter mqtt as the broker and 1883 for the port.
-6. Type `localhost:8485` in web browser to access zigbee2mqtt. Go through the onboarding procedure.
-    - Coordinator/Apater Port/Path: For SMLight SLZB-06, use `tcp://slzb-06.local:6638`.
-    - MQQT Server: I had to replace `localhost` with the IP address of the mqqt server. Using hostname of mqqt doesn't seem to work.
-    - Home assistant enabled?: `True`
-7. The onboarding procedure will automatically update the zigbee2mqtt `configuration.yml` file
-8. Within zigbee2mqtt web browser (`localhost:8485`), Click Permit join (All) to pair zigbee devices.
-9. Pairing zigbee devices will update the zigbee2mqtt `configuration.yml` file.
-10. Now you can add automation scripts (`automations.yml` file) to home assistant using zigbee devices.
-    - See the `zigbee-button-toggle-plug` branch I made that connects the zigbee button and zigbee plug devices and grabs their states in the automation script so the button toggles the plug.
+### Docker [24.0.2 build 610b8d0]
+Start containers: `sudo docker compose -f 'docker-compose.yml' up -d --build`
+
+Stop containers: `sudo docker compose stop`
+
+All containers set to run with `network_mode: host` and `privileged: true`
+
+### Home Assistant [2025.7.2]
+
+Web Frontend: `http://<Host ip>:8123`
+  - MQTT integration:
+    - `<Host ip>` for broker and `1883` for port
+  - SMLIGHT SLZB integration:
+    - `<Zigbee Coordinator ip>` for URL
+  - Matter integration:
+    - `ws://<Host ip>:5580/ws` for URL
+    - To add matter device, using phone app go to `Settings > Devices & services > Devices tab > + ADD DEVICE > Add Matter device`
+  - Open Thread Border Router integration:
+    - `http://127.0.0.1:8081` for URL
+  - Thread integration:
+    - Set Open Thread Border Router as preferred network
+    - Select `Use router for Android + iOS credentials`
+    - Using phone app go to `Settings > Companion App > Troubleshooting > Sync Thread credentials`, run sync twice so the message reads "*Home Assistant and this device use the same network*"
+
+### Matter [8.0.0]
+Web Frontend: `http://<Host ip>:5580`
+
+### Open Thread Border Router [latest]
+Web Frontend: `http://127.0.0.1:80` inside host
+
+Rest API:  `http://127.0.0.1:8081` inside host
