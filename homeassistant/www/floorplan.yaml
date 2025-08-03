@@ -1,0 +1,54 @@
+type: picture-elements
+image: /local/floorplan/transparent.png?version=C8A9834DE49B99CE8CA08C0B974F39B4
+elements:
+  - type: conditional
+    title: Base
+    conditions:
+      []
+    elements:
+      - type: image
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        image: /local/floorplan/base.png?version=D1267F24D0A3EEFC1BAB99450F29BA5E
+        filter: none
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+  - type: conditional
+    title: switch.plug
+    conditions:
+      - condition: state
+        entity: switch.plug
+        state: 'on'
+    elements:
+      - type: image
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        image: /local/floorplan/switch.plug.png?version=004550983F33138C00CC6E601D437C23
+        filter: none
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          mix-blend-mode: lighten
+  - type: state-icon
+    entity: switch.plug
+    title: Lamp
+    style:
+      top: 11.05%
+      left: 42.87%
+      border-radius: 50%
+      text-align: center
+      background-color: rgba(255, 255, 255, 0.3)
+      opacity: 100%
+    tap_action:
+      action: toggle
+    double_tap_action:
+      action: none
+    hold_action:
+      action: more-info
