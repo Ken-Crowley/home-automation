@@ -11,7 +11,7 @@ elements:
           action: none
         hold_action:
           action: none
-        image: /local/floorplan/base.png?version=D1267F24D0A3EEFC1BAB99450F29BA5E
+        image: /local/floorplan/base.png?version=BBEE42AE07FDEF0950042D220CC8E6C6
         filter: none
         style:
           left: 50%
@@ -29,7 +29,7 @@ elements:
           action: none
         hold_action:
           action: none
-        image: /local/floorplan/switch.plug.png?version=004550983F33138C00CC6E601D437C23
+        image: /local/floorplan/switch.plug.png?version=A1367A3612788894FEE6C6A4B141499D
         filter: none
         style:
           left: 50%
@@ -40,8 +40,24 @@ elements:
     entity: switch.plug
     title: Lamp
     style:
-      top: 11.05%
-      left: 42.87%
+      top: 11.12%
+      left: 42.76%
+      border-radius: 50%
+      text-align: center
+      background-color: rgba(255, 255, 255, 0.3)
+      opacity: 100%
+    tap_action:
+      action: toggle
+    double_tap_action:
+      action: none
+    hold_action:
+      action: more-info
+  - type: state-icon
+    entity: lock.level_bolt_matter
+    title: Lock
+    style:
+      top: 93.85%
+      left: 48.57%
       border-radius: 50%
       text-align: center
       background-color: rgba(255, 255, 255, 0.3)
