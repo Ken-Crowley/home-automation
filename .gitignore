@@ -21,3 +21,12 @@ zigbee2mqtt/data/state.json
 
 # matter
 matter/*
+
+# openwakeword
+openwakeword/*
+
+# piper
+piper/*
+
+# whisper
+whisper/*

@@ -64,3 +64,65 @@ services:
       - RADIO_URL=spinel+hdlc+uart:///dev/ttyUSB0
       - FIREWALL=0
       - TZ=${TZ}
+  openwakeword:
+    image: homeassistant/amd64-addon-openwakeword:1.10.0
+    container_name: openwakeword
+    hostname: openwakeword
+    network_mode: host
+    restart: unless-stopped
+    privileged: true
+    entrypoint: python3
+    command: >
+      -m wyoming_openwakeword
+      --uri 'tcp://0.0.0.0:10400'
+      --preload-model 'ok_nabu'
+      --custom-model-dir /share/openwakeword
+    volumes:
+      - ./openwakeword/data:/data
+      - ./openwakeword/custom-model-dir:/share/openwakeword
+    environment:
+      - TZ=${TZ}
+  piper:
+    image: homeassistant/amd64-addon-piper:1.6.2
+    container_name: piper
+    hostname: piper
+    network_mode: host
+    restart: unless-stopped
+    privileged: true
+    entrypoint: python3
+    command: >
+      -m wyoming_piper
+      --piper '/usr/share/piper/piper'
+      --uri 'tcp://0.0.0.0:10200'
+      --length-scale "1"
+      --noise-scale "0.667"
+      --speaker "0"
+      --voice "en_US-lessac-medium"
+      --max-piper-procs "1"
+      --data-dir /data
+      --data-dir /share/piper
+      --download-dir /data
+    volumes:
+      - ./piper/data:/data
+    environment:
+      - TZ=${TZ}
+  whisper:
+    image: homeassistant/amd64-addon-whisper:2.6.0
+    container_name: whisper
+    hostname: whisper
+    network_mode: host
+    restart: unless-stopped
+    privileged: true
+    entrypoint: python3
+    command: >
+      -m wyoming_faster_whisper
+      --uri tcp://0.0.0.0:10300
+      --model small-int8
+      --beam-size 1
+      --language en
+      --data-dir /data
+      --download-dir /data
+    volumes:
+      - ./whisper/data:/data
+    environment:
+      - TZ=${TZ}

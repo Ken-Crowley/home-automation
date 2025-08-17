@@ -30,6 +30,10 @@ Web Frontend: `http://<Host ip>:8123`
     - Set Open Thread Border Router as preferred network
     - Select `Use router for Android + iOS credentials`
     - Using phone app go to `Settings > Companion App > Troubleshooting > Sync Thread credentials`, run sync twice so the message reads "*Home Assistant and this device use the same network*"
+  - Wyoming integration:
+    - Piper: `<Host ip>` for host and `10200` for port
+    - Whisper: `<Host ip>` for host and `10300` for port
+    - Openwakeword: `<Host ip>` for host and `10400` for port
 
 ### Matter [8.0.0]
 Web Frontend: `http://<Host ip>:5580`
