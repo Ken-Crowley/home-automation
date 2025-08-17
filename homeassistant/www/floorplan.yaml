@@ -1,0 +1,70 @@
+type: picture-elements
+image: /local/floorplan/transparent.png?version=C8A9834DE49B99CE8CA08C0B974F39B4
+elements:
+  - type: conditional
+    title: Base
+    conditions:
+      []
+    elements:
+      - type: image
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        image: /local/floorplan/base.png?version=70E31FBF11BB0F457B556F18C54BF2D7
+        filter: none
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+  - type: conditional
+    title: switch.plug
+    conditions:
+      - condition: state
+        entity: switch.plug
+        state: 'on'
+    elements:
+      - type: image
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        image: /local/floorplan/switch.plug.png?version=1D3F5215FDEF4C89FF687186C16C0BE6
+        filter: none
+        style:
+          left: 50%
+          top: 50%
+          width: 100%
+          mix-blend-mode: lighten
+  - type: state-icon
+    entity: switch.plug
+    title: Lamp
+    style:
+      top: 11.15%
+      left: 42.77%
+      border-radius: 50%
+      text-align: center
+      background-color: rgba(255, 255, 255, 0.3)
+      opacity: 100%
+    tap_action:
+      action: toggle
+    double_tap_action:
+      action: none
+    hold_action:
+      action: more-info
+  - type: state-icon
+    entity: lock.level_bolt_matter
+    title: Lock
+    style:
+      top: 93.82%
+      left: 48.57%
+      border-radius: 50%
+      text-align: center
+      background-color: rgba(255, 255, 255, 0.3)
+      opacity: 100%
+    tap_action:
+      action: toggle
+    double_tap_action:
+      action: none
+    hold_action:
+      action: more-info

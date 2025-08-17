@@ -6,6 +6,9 @@ homeassistant/blueprints
 homeassistant/deps
 homeassistant/tts
 homeassistant/secrets.yaml
+homeassistant/custom_components/hacs
+homeassistant/www/renders/*.db
+homeassistant/www/floorplan/*.db
 
 # mosquitto
 mosquitto/log*
