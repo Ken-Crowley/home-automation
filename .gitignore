@@ -6,9 +6,12 @@ homeassistant/blueprints
 homeassistant/deps
 homeassistant/tts
 homeassistant/secrets.yaml
+homeassistant/custom_components/alexa_media
 homeassistant/custom_components/hacs
-homeassistant/www/renders/*.db
+homeassistant/custom_components/spotifyplus
+homeassistant/www/community
 homeassistant/www/floorplan/*.db
+homeassistant/www/renders/*.db
 
 # mosquitto
 mosquitto/log*

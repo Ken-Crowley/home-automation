@@ -1,0 +1,16 @@
+ecobee_alexa_notification:
+  alias: Ecobee Alexa Notification
+  sequence:
+  - data:
+      message: Test
+    action: notify.alexa_media_ken_s_ecobee_smart_thermostat_premium
+  mode: single
+ecobee_alexa_song:
+  alias: Ecobee Alexa Song
+  sequence:
+  - data:
+      media_content_id: http://192.168.0.34:8123/local/media/test.mp3
+      media_content_type: routine
+    target:
+      entity_id: media_player.ken_s_ecobee_smart_thermostat_premium
+    action: media_player.play_media

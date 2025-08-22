@@ -9,3 +9,24 @@
      target:
        entity_id: switch.plug
   mode: single
+
+- alias: Monday Trash Reminder
+  description: Remind me to take out the trash if I'm home at 9pm on Monday and the plug (lamps in bedroom) are on
+  trigger:
+    - platform: time
+      at: "21:00:00"  # 9 PM
+  condition:
+    - condition: time
+      weekday:
+        - mon  # Only Monday
+    - condition: state
+      entity_id: device_tracker.pixel_8
+      state: "home"
+    - condition: state
+      entity_id: switch.plug  # Replace with your plug's entity_id
+      state: "on"
+  action:
+    - service: notify.alexa_media_ken_s_ecobee_smart_thermostat_premium
+      data:
+        message: "Did you take out the trash?"
+  mode: single
