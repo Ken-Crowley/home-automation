@@ -11,7 +11,7 @@
   mode: single
 
 - alias: Monday Trash Reminder
-  description: Remind me to take out the trash if I'm home at 9pm on Monday and the plug (lamps in bedroom) are on
+  description: Reminder to take the trash out if Pixel 8 is home at 9pm on Monday AND the plug (lamps in bedroom) is on
   trigger:
     - platform: time
       at: "21:00:00"  # 9 PM
@@ -30,3 +30,81 @@
       data:
         message: "Did you take out the trash?"
   mode: single
+
+- alias: Lions Game Started
+  description: Notify pixel 8 and announce on alexa ecobee (if pixel 8 is home) that the lions are playing.
+  trigger:
+    - platform: state
+      entity_id: sensor.lions
+      to: "IN"
+  action:
+    - service: notify.mobile_app_pixel_8
+      data:
+        message: "🦁 Detroit Lions 🦁 are now playing {{ state_attr('sensor.lions','opponent_name') }} at {{ state_attr('sensor.lions','venue') }}"
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: device_tracker.pixel_8
+          state: "home"
+        sequence:
+          - service: notify.alexa_media_ken_s_ecobee_smart_thermostat_premium
+            data:
+              message: "Detroit Lions are now playing {{ state_attr('sensor.lions','opponent_name') }} at {{ state_attr('sensor.lions','venue') }}"
+  mode: single
+
+- alias: Cardinals Game Started
+  description: Notify pixel 8 and announce on alexa ecobee (if pixel 8 is home) that the cardinals are playing.
+  trigger:
+    - platform: state
+      entity_id: sensor.cardinals
+      to: "IN"
+  action:
+    - service: notify.mobile_app_pixel_8
+      data:
+        message: "🐦 Arizona Cardinals 🐦 are now playing {{ state_attr('sensor.cardinals','opponent_name') }} at {{ state_attr('sensor.cardinals','venue') }}"
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: device_tracker.pixel_8
+          state: "home"
+        sequence:
+          - service: notify.alexa_media_ken_s_ecobee_smart_thermostat_premium
+            data:
+              message: "Arizona Cardinals are now playing {{ state_attr('sensor.cardinals','opponent_name') }} at {{ state_attr('sensor.cardinals','venue') }}"
+  mode: single
+
+# - alias: Lock Notification
+#   description: Sends a notification if the front door is unlocked when Ken leaves the house
+#   trigger:
+#     - platform: state
+#       entity_id: person.ken
+#       to: not_home
+#   condition:
+#     - condition: state
+#       entity_id: lock.level_bolt_matter
+#       state: unlocked
+#   action:
+#     - service: notify.mobile_app_pixel_8
+#       data:
+#         title: "Front Door Unlocked"
+#         message: "Lock Front Door?"
+#         data:
+#           actions:
+#             - action: "LOCK_FRONT_DOOR"
+#               title: "Lock"
+#             - action: "DISMISS"
+#               title: "Dismiss"
+#   mode: single
+
+# - alias: Lock front door from notification
+#   description: Locks the front door when the lock notification is pressed
+#   trigger:
+#     - platform: event
+#       event_type: mobile_app_notification_action
+#       event_data:
+#         action: "LOCK_FRONT_DOOR"
+#   action:
+#     - service: lock.lock
+#       target:
+#         entity_id: lock.level_bolt_matter
+#   mode: single

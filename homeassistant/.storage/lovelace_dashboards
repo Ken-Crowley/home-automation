@@ -19,7 +19,26 @@
         "title": "Home",
         "require_admin": false,
         "mode": "storage",
-        "url_path": "dashboard-home"
+        "url_path": "dashboard-home",
+        "icon": "mdi:home"
+      },
+      {
+        "id": "dashboard_homep8",
+        "show_in_sidebar": true,
+        "icon": "mdi:home",
+        "title": "Home",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "dashboard-homep8"
+      },
+      {
+        "id": "dashboard_clicker",
+        "show_in_sidebar": true,
+        "icon": "mdi:remote-tv",
+        "title": "Clicker",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "dashboard-clicker"
       }
     ]
   }
