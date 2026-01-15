@@ -1,6 +1,6 @@
 ## System Details
 - **Host**: [Synology NAS DS224+](https://www.synology.com/en-us/products/DS224+) [DSM 7.2.1-69057 Update 5]
-- **Zigbee Coordinator**: [SMLight SLZB-MR1](https://smlight.tech/product/slzb-mr1/) PoE [CC2652P7 20240315] 
+- **Zigbee Coordinator**: [SMLight SLZB-MR1](https://smlight.tech/product/slzb-mr1/) PoE [CC2652P7 20250325] 
   - [Third Reality Zigbee Smart Button](https://3reality.com/product/smart-button/) [3RSB22BZ v1.00.35]
   - [Third Reality Zigbee Smart Plug Gen2](https://3reality.com/product/smart-plug-gen2-with-energy-monitoring/) [3RSP02028BZ v1.00.92]
 - **Matter-over-Thread**: [SMLight SLZB-MR1](https://smlight.tech/product/slzb-mr1/) USB [EFR32MG21 20241105]
@@ -30,6 +30,10 @@ Web Frontend: `http://<Host ip>:8123`
     - Set Open Thread Border Router as preferred network
     - Select `Use router for Android + iOS credentials`
     - Using phone app go to `Settings > Companion App > Troubleshooting > Sync Thread credentials`, run sync twice so the message reads "*Home Assistant and this device use the same network*"
+  - Wyoming integration:
+    - Piper: `<Host ip>` for host and `10200` for port
+    - Whisper: `<Host ip>` for host and `10300` for port
+    - Openwakeword: `<Host ip>` for host and `10400` for port
 
 ### Matter [8.0.0]
 Web Frontend: `http://<Host ip>:5580`

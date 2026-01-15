@@ -6,9 +6,15 @@ homeassistant/blueprints
 homeassistant/deps
 homeassistant/tts
 homeassistant/secrets.yaml
+homeassistant/themes
+homeassistant/custom_components/alexa_media
 homeassistant/custom_components/hacs
-homeassistant/www/renders/*.db
+homeassistant/custom_components/spotifyplus
+homeassistant/custom_components/teamtracker
+homeassistant/themese
+homeassistant/www/community
 homeassistant/www/floorplan/*.db
+homeassistant/www/renders/*.db
 
 # mosquitto
 mosquitto/log*
@@ -21,3 +27,12 @@ zigbee2mqtt/data/state.json
 
 # matter
 matter/*
+
+# openwakeword
+openwakeword/*
+
+# piper
+piper/*
+
+# whisper
+whisper/*

@@ -11,7 +11,7 @@
           "cards": [
             {
               "type": "picture-elements",
-              "image": "/local/floorplan/transparent.png?version=C8A9834DE49B99CE8CA08C0B974F39B4",
+              "image": "/local/floorplan/transparent.png?version=BF196C1652ABBA54DCDAD8AD966B922E",
               "elements": [
                 {
                   "type": "conditional",
@@ -26,7 +26,7 @@
                       "hold_action": {
                         "action": "none"
                       },
-                      "image": "/local/floorplan/base.png?version=70E31FBF11BB0F457B556F18C54BF2D7",
+                      "image": "/local/floorplan/base.png?version=DF66100206283C719C9D671258D589E3",
                       "filter": "none",
                       "style": {
                         "left": "50%",
@@ -55,7 +55,7 @@
                       "hold_action": {
                         "action": "none"
                       },
-                      "image": "/local/floorplan/switch.plug.png?version=1D3F5215FDEF4C89FF687186C16C0BE6",
+                      "image": "/local/floorplan/switch.plug.png?version=7F87990855291CFF8EA00A905527AA66",
                       "filter": "none",
                       "style": {
                         "left": "50%",
@@ -71,8 +71,8 @@
                   "entity": "switch.plug",
                   "title": "Lamp",
                   "style": {
-                    "top": "11.15%",
-                    "left": "42.77%",
+                    "top": "40.86%",
+                    "left": "36.82%",
                     "border-radius": "50%",
                     "text-align": "center",
                     "background-color": "rgba(255, 255, 255, 0.3)",
@@ -90,11 +90,77 @@
                 },
                 {
                   "type": "state-icon",
+                  "entity": "camera.rlc_820a_cam2_fluent",
+                  "title": null,
+                  "style": {
+                    "top": "59.15%",
+                    "left": "51.75%",
+                    "border-radius": "50%",
+                    "text-align": "center",
+                    "background-color": "rgba(255, 255, 255, 0.3)",
+                    "opacity": "100%"
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "double_tap_action": {
+                    "action": "none"
+                  },
+                  "hold_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "state-icon",
                   "entity": "lock.level_bolt_matter",
                   "title": "Lock",
                   "style": {
-                    "top": "93.82%",
-                    "left": "48.57%",
+                    "top": "58.22%",
+                    "left": "41.58%",
+                    "border-radius": "50%",
+                    "text-align": "center",
+                    "background-color": "rgba(255, 255, 255, 0.3)",
+                    "opacity": "100%"
+                  },
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "double_tap_action": {
+                    "action": "none"
+                  },
+                  "hold_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "state-icon",
+                  "entity": "camera.rlc_820a_cam1_fluent",
+                  "title": null,
+                  "style": {
+                    "top": "38.81%",
+                    "left": "22.69%",
+                    "border-radius": "50%",
+                    "text-align": "center",
+                    "background-color": "rgba(255, 255, 255, 0.3)",
+                    "opacity": "100%"
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "double_tap_action": {
+                    "action": "none"
+                  },
+                  "hold_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "state-icon",
+                  "entity": "media_player.ken_s_ecobee_smart_thermostat_premium",
+                  "title": null,
+                  "style": {
+                    "top": "47.39%",
+                    "left": "38.83%",
                     "border-radius": "50%",
                     "text-align": "center",
                     "background-color": "rgba(255, 255, 255, 0.3)",
@@ -113,7 +179,202 @@
               ]
             }
           ],
-          "title": "Home"
+          "title": "Home",
+          "icon": "mdi:home",
+          "background": {
+            "opacity": 33,
+            "alignment": "top center",
+            "size": "cover",
+            "repeat": "repeat",
+            "attachment": "fixed"
+          },
+          "subview": false
+        },
+        {
+          "type": "sections",
+          "max_columns": 4,
+          "title": "test",
+          "path": "test",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "picture-elements",
+                  "image": "/local/floorplan/transparent.png?version=C8A9834DE49B99CE8CA08C0B974F39B4",
+                  "elements": [
+                    {
+                      "type": "conditional",
+                      "title": "Base",
+                      "conditions": [],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "tap_action": {
+                            "action": "none"
+                          },
+                          "hold_action": {
+                            "action": "none"
+                          },
+                          "image": "/local/floorplan/base.png?version=1F4EB304A9CCE124EEBE4CB8F8C288D8",
+                          "filter": "none",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "title": "switch.plug",
+                      "conditions": [
+                        {
+                          "condition": "state",
+                          "entity": "switch.plug",
+                          "state": "on"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "tap_action": {
+                            "action": "none"
+                          },
+                          "hold_action": {
+                            "action": "none"
+                          },
+                          "image": "/local/floorplan/switch.plug.png?version=400238DF02379D8C0163E5C6F4875AA0",
+                          "filter": "none",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "mix-blend-mode": "lighten"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "switch.plug",
+                      "title": "Lamp",
+                      "style": {
+                        "top": "11.24%",
+                        "left": "34.82%",
+                        "border-radius": "50%",
+                        "text-align": "center",
+                        "background-color": "rgba(255, 255, 255, 0.3)",
+                        "opacity": "100%"
+                      },
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "double_tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": {
+                        "action": "more-info"
+                      }
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "camera.rlc_820a_cam2_fluent",
+                      "title": null,
+                      "style": {
+                        "top": "95.37%",
+                        "left": "52.05%",
+                        "border-radius": "50%",
+                        "text-align": "center",
+                        "background-color": "rgba(255, 255, 255, 0.3)",
+                        "opacity": "100%"
+                      },
+                      "tap_action": {
+                        "action": "more-info"
+                      },
+                      "double_tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": {
+                        "action": "more-info"
+                      }
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "lock.level_bolt_matter",
+                      "title": "Lock",
+                      "style": {
+                        "top": "90.34%",
+                        "left": "40.29%",
+                        "border-radius": "50%",
+                        "text-align": "center",
+                        "background-color": "rgba(255, 255, 255, 0.3)",
+                        "opacity": "100%"
+                      },
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "double_tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": {
+                        "action": "more-info"
+                      }
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "camera.rlc_820a_cam1_fluent",
+                      "title": null,
+                      "style": {
+                        "top": "1.47%",
+                        "left": "18.10%",
+                        "border-radius": "50%",
+                        "text-align": "center",
+                        "background-color": "rgba(255, 255, 255, 0.3)",
+                        "opacity": "100%"
+                      },
+                      "tap_action": {
+                        "action": "more-info"
+                      },
+                      "double_tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": {
+                        "action": "more-info"
+                      }
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "media_player.ken_s_ecobee_smart_thermostat_premium",
+                      "title": null,
+                      "style": {
+                        "top": "40.98%",
+                        "left": "37.11%",
+                        "border-radius": "50%",
+                        "text-align": "center",
+                        "background-color": "rgba(255, 255, 255, 0.3)",
+                        "opacity": "100%"
+                      },
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "double_tap_action": {
+                        "action": "none"
+                      },
+                      "hold_action": {
+                        "action": "more-info"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

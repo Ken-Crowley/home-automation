@@ -1,0 +1,43 @@
+ecobee_alexa_notification:
+  alias: Ecobee Alexa Notification
+  sequence:
+  - data:
+      message: Test
+    action: notify.alexa_media_ken_s_ecobee_smart_thermostat_premium
+  mode: single
+ecobee_alexa_song:
+  alias: Ecobee Alexa Song
+  sequence:
+  - data:
+      media_content_id: http://192.168.0.34:8123/local/media/test.mp3
+      media_content_type: routine
+    target:
+      entity_id: media_player.ken_s_ecobee_smart_thermostat_premium
+    action: media_player.play_media
+toggle_front_door_lock:
+  alias: Toggle Front Door Lock
+  sequence:
+    - choose:
+        - conditions: "{{ is_state('lock.front_door', 'locked') }}"
+          sequence:
+            - service: lock.unlock
+              target:
+                entity_id: lock.level_bolt_matter
+      default:
+        - service: lock.lock
+          target:
+            entity_id: lock.front_door
+notification:
+  alias: Notification
+  sequence:
+    - service: notify.mobile_app_pixel_8
+      data:
+        title: "Front Door Unlocked"
+        message: "Lock Front Door?"
+        data:
+          actions:
+            - action: "LOCK_FRONT_DOOR"
+              title: "Lock"
+            - action: "DISMISS"
+              title: "Dismiss"
+          authentication_required: true
